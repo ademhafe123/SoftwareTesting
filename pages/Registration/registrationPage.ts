@@ -1,30 +1,52 @@
 import { Page } from "@playwright/test";
-import { locators } from "./registrationPageLocators";
+import { locators } from "./registrationLocators";
 
 class RegistrationPage {
   private page: Page;
-
   constructor(page: Page) {
     this.page = page;
   }
 
-  async openRegistrationPage() {
-    await this.page.goto("https://iqmobile.ba/my-account/");
+  async goToRegistrationPage() {
+    await this.page.getByText(locators.goToRegisterButton).click();
     await this.page.waitForLoadState("networkidle");
   }
 
-  async enterUsername(username: string) {
-    await this.page.locator(locators.username).fill(username);
+  async enterRegistrationInformation(
+    email,
+    username,
+    password,
+    confirmPassword,
+    fullname,
+    address,
+    postCode,
+    city,
+    phone
+  ) {
+    //ENTER email
+    await this.page.fill(locators.email, email);
+    //ENTER username
+    await this.page.fill(locators.username, username);
+    //ENTER password
+    await this.page.fill(locators.password, password);
+    //ENTER confirmPassword
+    await this.page.fill(locators.confirmPassword, confirmPassword);
+    //ACCEPT TERMS OF USE
+    await this.page.check(locators.termsCheckbox);
+    //ENTER fullname
+    await this.page.fill(locators.fullname, fullname);
+    //ENTER address
+    await this.page.fill(locators.address, address);
+    //ENTER postCode
+    await this.page.fill(locators.postCode, postCode);
+    //ENTER city
+    await this.page.fill(locators.city, city);
+    //ENTER phone
+    await this.page.fill(locators.phone, phone);
   }
-  async enterEmail(email: string) {
-    await this.page.locator(locators.email).fill(email);
-  }
-  async enterPassword(password: string) {
-    await this.page.locator(locators.password).fill(password);
-  }
-  async submitRegistration() {
-    await this.page.locator(locators.register).click();
-    await this.page.waitForLoadState("networkidle");
+
+  async registerUser() {
+    await this.page.click(locators.registerButton);
   }
 }
 

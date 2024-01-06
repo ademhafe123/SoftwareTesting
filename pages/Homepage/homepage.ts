@@ -1,5 +1,4 @@
 import { Page } from "@playwright/test";
-import { locators } from "./homepageLocators";
 
 class Homepage {
   private page: Page;
@@ -8,14 +7,13 @@ class Homepage {
     this.page = page;
   }
 
-  async openShopPage() {
-    await this.page.goto("https://iqmobile.ba/shop");
+  async gotoContactPage() {
+    await this.page.getByText("Kontakt").click();
     await this.page.waitForLoadState("networkidle");
   }
 
-  async checkSamsung() {
-    const locator = `//*[@id="filter_by_brand-3"]/div/ul/li[11]/label/input`;
-    await this.page.click(locator, { timeout: 1000 });
+  async gotoAboutUs() {
+    await this.page.getByText("O nama").click();
     await this.page.waitForLoadState("networkidle");
   }
 }

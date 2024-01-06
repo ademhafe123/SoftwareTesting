@@ -1,16 +1,17 @@
-export const testData = {
-  register: {
-    username: "defaultUser",
-    email: "myemail@mail.com",
-    password: "Test_123",
-  },
+const random = Math.floor(Math.random() * 1000).toString();
 
-  name: `name`,
-  lastname: `lastname`,
-  coutry: `Bosna i Hercegovina`,
-  street: `rulica`,
-  postalCode: `71000`,
+export const testData = {
+  email: "myemail@mail.com",
+  username: `username${random}`,
+  password: "Test_123",
+  confirmPassword: "Test_123",
+  fullname: "name lastname",
+  address: "address",
+  postCode: `12345`,
   city: `hengshai`,
   phone: `123456`,
-  email: `m@m.m`,
+  loginUsername: "defaultUser",
+  searchQuery: "podloga za mis",
+  validAddress: "Butmirska Cesta 14 Ilidza",
+  productQuantityEntry: 3,
 };
