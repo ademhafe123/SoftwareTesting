@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { locators } from "./pcwizardLocators";
 
 class PCWizard {
   private page: Page;
@@ -13,7 +14,7 @@ class PCWizard {
   }
 
   async gotoProductPage() {
-    await this.page.goto("https://www.wizardpc.ba/search.php?CatID=6");
+    await this.page.click(locators.productPageButton);
     await this.page.waitForLoadState("networkidle");
   }
 
@@ -23,7 +24,6 @@ class PCWizard {
   }
 
   async search(query: string) {
-    await this.page.waitForLoadState("domcontentloaded");
     await this.page.fill("#searchfor", query);
     await this.page.keyboard.press("Enter");
     await this.page.waitForLoadState("networkidle");

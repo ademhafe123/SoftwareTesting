@@ -14,4 +14,5 @@ export const testData = {
   searchQuery: "podloga za mis",
   validAddress: "Butmirska Cesta 14 Ilidza",
   productQuantityEntry: 3,
+  wrongConfPassword: "123",
 };

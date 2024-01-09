@@ -13,15 +13,15 @@ class RegistrationPage {
   }
 
   async enterRegistrationInformation(
-    email,
-    username,
-    password,
-    confirmPassword,
-    fullname,
-    address,
-    postCode,
-    city,
-    phone
+    email: string,
+    username: string,
+    password: string,
+    confirmPassword: string,
+    fullname: string,
+    address: string,
+    postCode: string,
+    city: string,
+    phone: string
   ) {
     //ENTER email
     await this.page.fill(locators.email, email);
@@ -43,6 +43,24 @@ class RegistrationPage {
     await this.page.fill(locators.city, city);
     //ENTER phone
     await this.page.fill(locators.phone, phone);
+  }
+
+  async enterPartialRegistrationInformation(
+    email: string,
+    username: string,
+    password: string,
+    confirmPassword: string
+  ) {
+    //ENTER email
+    await this.page.fill(locators.email, email);
+    //ENTER username
+    await this.page.fill(locators.username, username);
+    //ENTER password
+    await this.page.fill(locators.password, password);
+    //ENTER confirmPassword
+    await this.page.fill(locators.confirmPassword, confirmPassword);
+    //ACCEPT TERMS OF USE
+    await this.page.check(locators.termsCheckbox);
   }
 
   async registerUser() {
